@@ -1,12 +1,39 @@
-﻿<Window x:Class="HRSH_Transpera_Updater.MainWindow"
+﻿<Window x:Name="mainWind" x:Class="HRSH_Transpera_Updater.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HRSH_Transpera_Updater"
         mc:Ignorable="d"
-        Title="HRSH Transpera Updater" Height="200" Width="400">
+        Title="HRSH Transpera Updater" Height="200" Width="400" Foreground="White" Background="#FF000C2B" FontSize="16">
     <Grid>
-        
+        <Label Content="HRSH" HorizontalAlignment="Left" Margin="7,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+        <Label Content="Transpera" Foreground="White" HorizontalAlignment="Left" Margin="7,17,0,0" VerticalAlignment="Top" FontSize="12"/>
+        <Label Content="UPDATER" HorizontalAlignment="Left" Margin="308,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+        <Rectangle HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="286" Fill="White" Margin="0,81,0,0"/>
+        <Rectangle HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="89" Fill="White" Margin="311,107,0,0"/>
+        <Rectangle HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="57" Fill="White" Margin="270,94,0,0" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="35.57"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle HorizontalAlignment="Left" Height="179" VerticalAlignment="Top" Width="385" Fill="#33FFFFFF" Margin="-128,-36,0,0" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-45.83"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Label x:Name="lblStatus" Content="Status
+" HorizontalAlignment="Left" Margin="16,84,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>

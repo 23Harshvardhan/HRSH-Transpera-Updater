@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HRSH_Transpera_Updater"
         mc:Ignorable="d"
-        Title="HRSH Transpera Updater" Height="200" Width="400" Foreground="White" Background="#FF000C2B" FontSize="16">
+        Title="HRSH Transpera Updater" Height="200" Width="400" Foreground="White" Background="#FF000C2B" FontSize="16" ResizeMode="NoResize" Loaded="mainWind_Loaded">
     <Grid>
         <Label Content="HRSH" HorizontalAlignment="Left" Margin="7,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
         <Label Content="Transpera" Foreground="White" HorizontalAlignment="Left" Margin="7,17,0,0" VerticalAlignment="Top" FontSize="12"/>
-        <Label Content="UPDATER" HorizontalAlignment="Left" Margin="308,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
+        <Label Content="UPDATER" Margin="0,0,8,0" VerticalAlignment="Top" Foreground="White" FontSize="18" HorizontalAlignment="Right" Width="84"/>
         <Rectangle HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="286" Fill="White" Margin="0,81,0,0"/>
         <Rectangle HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="89" Fill="White" Margin="311,107,0,0"/>
         <Rectangle HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="57" Fill="White" Margin="270,94,0,0" RenderTransformOrigin="0.5,0.5">
@@ -22,7 +22,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Rectangle HorizontalAlignment="Left" Height="179" VerticalAlignment="Top" Width="385" Fill="#33FFFFFF" Margin="-128,-36,0,0" RenderTransformOrigin="0.5,0.5">
+        <Rectangle HorizontalAlignment="Left" Height="179" VerticalAlignment="Top" Width="318" Fill="#33FFFFFF" Margin="-86,-44,0,0" RenderTransformOrigin="0.5,0.5">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -32,8 +32,10 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Label x:Name="lblStatus" Content="Status
-" HorizontalAlignment="Left" Margin="16,84,0,0" VerticalAlignment="Top"/>
+        <Label Content="Status: " HorizontalAlignment="Left" Margin="16,84,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblStatus" Content="" HorizontalAlignment="Left" Margin="69,84,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="10,0,0,10" Width="87" Height="25" VerticalAlignment="Bottom" Click="btnUpdate_Click"/>
+        <Button x:Name="btnFinish" Content="Finish" HorizontalAlignment="Left" Margin="102,0,0,10" Width="87" Height="25" VerticalAlignment="Bottom" Click="btnFinish_Click"/>
 
     </Grid>
 </Window>

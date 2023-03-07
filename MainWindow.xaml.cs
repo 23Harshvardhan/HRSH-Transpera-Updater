@@ -20,7 +20,7 @@ namespace HRSH_Transpera_Updater
         private void mainWind_Loaded(object sender, RoutedEventArgs e)
         {
             btnFinish.IsEnabled = false;
-            //btnUpdate.IsEnabled = false;
+            btnUpdate.IsEnabled = false;
 
             lblStatus.Content = "Checking for updates...";
 

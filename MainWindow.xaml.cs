@@ -56,10 +56,22 @@ namespace HRSH_Transpera_Updater
                 process.Kill();
             }
 
-            File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\HRSH\Transpera\HRSH-Transpera.exe");
+            if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\HRSH\Transpera\HRSH-Transpera.exe"))
+            {
+                File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\HRSH\Transpera\HRSH-Transpera.exe");
+            }
 
-            WebClient client = new WebClient();
-            client.DownloadFile("https://an0maly.blob.core.windows.net/transpera/HRSH-Transpera.exe", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\HRSH\Transpera\HRSH-Transpera.exe");
+            if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\HRSH\Transpera\"))
+            {
+                WebClient client = new WebClient();
+                client.DownloadFile("https://an0maly.blob.core.windows.net/transpera/HRSH-Transpera.exe", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\HRSH\Transpera\HRSH-Transpera.exe");
+            }
+            else
+            {
+                Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\HRSH\Transpera\");
+                WebClient client = new WebClient();
+                client.DownloadFile("https://an0maly.blob.core.windows.net/transpera/HRSH-Transpera.exe", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\HRSH\Transpera\HRSH-Transpera.exe");
+            }
 
             lblStatus.Content = "Updated!";
             btnFinish.IsEnabled = true;

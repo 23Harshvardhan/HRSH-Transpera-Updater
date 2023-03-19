@@ -12,10 +12,31 @@ namespace HRSH_Transpera_Updater
     /// </summary>
     public partial class MainWindow : Window
     {
+        WebClient updater = new WebClient();
+
         public MainWindow()
         {
             InitializeComponent();
+
+            updater.DownloadProgressChanged += Updater_DownloadProgressChanged;
+            updater.DownloadDataCompleted += Updater_DownloadDataCompleted;
         }
+
+        #region ========== Updater Web Client Events ==========
+
+        private void Updater_DownloadDataCompleted(object sender, DownloadDataCompletedEventArgs e)
+        {
+            MessageBox.Show("Client successfully updated to latest version.", "Happy Hacking!", MessageBoxButton.OK);
+            this.Close();
+        }
+
+        private void Updater_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            progUpdater.Value = e.ProgressPercentage;
+            lblPercentage.Content = e.ProgressPercentage.ToString() + "%";
+        }
+
+        #endregion
 
         private void mainWind_Loaded(object sender, RoutedEventArgs e)
         {
@@ -49,6 +70,10 @@ namespace HRSH_Transpera_Updater
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
+            lblStatusLable.Visibility = Visibility.Hidden;
+            lblStatus.Visibility = Visibility.Hidden;
+            lblPercentage.Visibility = Visibility.Visible;
+            progUpdater.Visibility = Visibility.Visible;
             btnUpdate.IsEnabled = false;
 
             foreach (var process in Process.GetProcessesByName("HRSH-Transpera"))
@@ -61,20 +86,13 @@ namespace HRSH_Transpera_Updater
                 File.Delete(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\HRSH\Transpera\HRSH-Transpera.exe");
             }
 
-            if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\HRSH\Transpera\"))
-            {
-                WebClient client = new WebClient();
-                client.DownloadFile("https://an0maly.blob.core.windows.net/transpera/HRSH-Transpera.exe", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\HRSH\Transpera\HRSH-Transpera.exe");
-            }
-            else
+            if(!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\HRSH\Transpera\"))
             {
                 Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\HRSH\Transpera\");
-                WebClient client = new WebClient();
-                client.DownloadFile("https://an0maly.blob.core.windows.net/transpera/HRSH-Transpera.exe", Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\HRSH\Transpera\HRSH-Transpera.exe");
             }
 
-            lblStatus.Content = "Updated!";
-            btnFinish.IsEnabled = true;
+            Uri uri = new Uri("https://an0maly.blob.core.windows.net/transpera/HRSH-Transpera.exe");
+            updater.DownloadDataAsync(uri, Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\HRSH\Transpera\HRSH-Transpera.exe");
         }
 
         private void btnFinish_Click(object sender, RoutedEventArgs e)

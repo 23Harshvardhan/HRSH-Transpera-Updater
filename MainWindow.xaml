@@ -5,37 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HRSH_Transpera_Updater"
         mc:Ignorable="d"
-        Title="HRSH Transpera Updater" Height="200" Width="400" Foreground="White" Background="#FF000C2B" FontSize="16" ResizeMode="NoResize" Loaded="mainWind_Loaded">
+        Title="HRSH Transpera Updater" Height="200" Width="400" Foreground="White" FontSize="16" ResizeMode="NoResize" Loaded="mainWind_Loaded" Icon="/Img/Icon.ico">
+    <Window.Background>
+        <ImageBrush ImageSource="/Img/galaxy.jpg" Stretch="UniformToFill"/>
+    </Window.Background>
     <Grid>
-        <Label Content="HRSH" HorizontalAlignment="Left" Margin="7,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
-        <Label Content="Transpera" Foreground="White" HorizontalAlignment="Left" Margin="7,17,0,0" VerticalAlignment="Top" FontSize="12"/>
-        <Label Content="UPDATER" Margin="0,0,8,0" VerticalAlignment="Top" Foreground="White" FontSize="18" HorizontalAlignment="Right" Width="84"/>
-        <Rectangle HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="286" Fill="White" Margin="0,81,0,0"/>
-        <Rectangle HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="89" Fill="White" Margin="311,107,0,0"/>
-        <Rectangle HorizontalAlignment="Left" Height="37" VerticalAlignment="Top" Width="57" Fill="White" Margin="270,94,0,0" RenderTransformOrigin="0.5,0.5">
-            <Rectangle.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="35.57"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Rectangle.RenderTransform>
-        </Rectangle>
-        <Rectangle HorizontalAlignment="Left" Height="179" VerticalAlignment="Top" Width="318" Fill="#33FFFFFF" Margin="-86,-44,0,0" RenderTransformOrigin="0.5,0.5">
-            <Rectangle.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-45.83"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Rectangle.RenderTransform>
-        </Rectangle>
-        <Label Content="Status: " HorizontalAlignment="Left" Margin="16,84,0,0" VerticalAlignment="Top"/>
+        <Label Content="HRSH" HorizontalAlignment="Left" Margin="7,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="24" FontWeight="Bold"/>
+        <Label Content="Transpera" Foreground="White" HorizontalAlignment="Left" Margin="7,20,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="UPDATER" Margin="0,2,10,0" VerticalAlignment="Top" Foreground="White" FontSize="20" HorizontalAlignment="Right" Width="94"/>
+        <Rectangle HorizontalAlignment="Center" Height="37" VerticalAlignment="Top" Width="400" Fill="#7FFFFFFF" Margin="0,81,0,0"/>
+        <Label x:Name="lblStatusLable" Content="Status: " HorizontalAlignment="Left" Margin="16,84,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblStatus" Content="" HorizontalAlignment="Left" Margin="69,84,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="10,0,0,10" Width="87" Height="25" VerticalAlignment="Bottom" Click="btnUpdate_Click"/>
         <Button x:Name="btnFinish" Content="Finish" HorizontalAlignment="Left" Margin="102,0,0,10" Width="87" Height="25" VerticalAlignment="Bottom" Click="btnFinish_Click"/>
+        <ProgressBar x:Name="progUpdater" Height="18" Margin="10,92,10,0" VerticalAlignment="Top" Visibility="Hidden">
+            <ProgressBar.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF8BA0F4"/>
+                    <GradientStop Color="#FFD758EA" Offset="1"/>
+                </LinearGradientBrush>
+            </ProgressBar.Foreground>
+        </ProgressBar>
+        <Label x:Name="lblPercentage" Content="" HorizontalAlignment="Left" Margin="16,84,0,0" VerticalAlignment="Top" Foreground="White" Visibility="Hidden"/>
 
     </Grid>
 </Window>
